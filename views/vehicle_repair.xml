@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vehicle_repair_tree" model="ir.ui.view">
+        <field name="name">vehicle.repair.tree</field>
+        <field name="model">vehicle.repair</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle Repair">
+                <field name="name"/>
+                <field name="vehicle_number"/>
+                <field name="vehicle_owner"/>
+                <field name="customer_phone_number"/>
+                <field name="service_date"/>
+                <field name="service_list"/>
+                <field name="service_amount_move_id"/>
+                <field name="invoice_payment_status"/>
+                <field name="old_customer"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="vehicle_repair_form" model="ir.ui.view">
+        <field name="name">vehicle.repair.form</field>
+        <field name="model">vehicle.repair</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Repair">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="vehicle_number"/>
+                            <field name="vehicle_owner"/>
+                            <field name="customer_phone_number"/>
+                            <field name="customer_type"/>
+                        </group>
+                        <group>
+                            <field name="service_date"/>
+                            <field name="old_customer"/>
+                            <field name="service_amount_move_id"/>
+                            <field name="invoice_payment_status"/>
+                        </group>
+                    </group>
+                    <field name="service_list"/>
+                    <field name="notes"/>
+                    <group>
+                        <group>
+                            <field name="discount_rate" attrs="{'invisible': [('customer_type',  '=', 'new')]}" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!--    action of the patients menu-->
+    <record id="action_vehicle_repair" model="ir.actions.act_window">
+        <field name="name">Vehicle Repair</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vehicle.repair</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="vehicle_repair_tree"/>
+    </record>
+
+    <menuitem id="vehicle_repair_sub_menu" parent="vehicle_root_menu" name="Vehicle Repair" action="action_vehicle_repair" sequence="2"/>
+</odoo>

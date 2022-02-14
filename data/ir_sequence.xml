@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- My Model Name -->
+
+        <record model="ir.sequence" id="customer_info_code_sequence">
+            <field name="name">Customer info</field>
+            <field name="code">customer.info</field>
+            <field name="implementation">standard</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">Customer-</field>
+            <field name="padding">6</field>
+            <field name="number_increment">1</field>
+            <field name="number_next_actual">0</field>
+        </record>
+
+        <record model="ir.sequence" id="vehicle_services_code_sequence">
+            <field name="name">Vehicle Services</field>
+            <field name="code">vehicle.services</field>
+            <field name="implementation">standard</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">Service-</field>
+            <field name="padding">6</field>
+            <field name="number_increment">1</field>
+            <field name="number_next_actual">0</field>
+        </record>
+
+        <record model="ir.sequence" id="vehicle_brand_code_sequence">
+            <field name="name">Vehicle Brand</field>
+            <field name="code">vehicle.brand</field>
+            <field name="implementation">standard</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">VB-</field>
+            <field name="padding">6</field>
+            <field name="number_increment">1</field>
+            <field name="number_next_actual">0</field>
+        </record>
+
+        <record model="ir.sequence" id="vehicle_repair_code_sequence">
+            <field name="name">Vehicle Repair</field>
+            <field name="code">vehicle.repair</field>
+            <field name="implementation">standard</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">VR-</field>
+            <field name="padding">6</field>
+            <field name="number_increment">1</field>
+            <field name="number_next_actual">0</field>
+        </record>
+        
+    </data>
+</odoo>

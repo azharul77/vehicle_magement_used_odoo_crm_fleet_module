@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vehicle_info_tree" model="ir.ui.view">
+        <field name="name">vehicle.info.tree</field>
+        <field name="model">vehicle.info</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="vehicle_type"/>
+                <field name="vehicle_model"/>
+                <field name="vehicle_owner"/>
+                <field name="customer_phone_number"/>
+                <field name="notes"/>
+
+            </tree>
+        </field>
+    </record>
+    
+    <record id="vehicle_info_form" model="ir.ui.view">
+        <field name="name">vehicle.info.form</field>
+        <field name="model">vehicle.info</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="vehicle_type"/>
+                        </group>
+                        <group>
+                            <field name="vehicle_owner"/>
+                            <field name="vehicle_model"/>
+                            <field name="customer_phone_number"/>
+                        </group>
+                    </group>
+                    <field name="notes"/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}' />
+                </div>
+            </form>
+        </field>
+    </record>
+    <!--    action of the patients menu-->
+    <record id="action_vehicle" model="ir.actions.act_window">
+        <field name="name">Vehicle</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vehicle.info</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="vehicle_info_tree"/>
+    </record>
+
+    <menuitem id="vehicle_root_menu" name="Vehicle Management"  sequence="1" web_icon="vehicle_management/static/description/car.png" />
+    <menuitem id="vehicle_sub_menu" parent="vehicle_root_menu" name="Vehicles" action="action_vehicle" sequence="1"/>
+     <menuitem id="configuration_vehicle"  parent="vehicle_root_menu" name="Configuration" sequence="10"/>
+</odoo>

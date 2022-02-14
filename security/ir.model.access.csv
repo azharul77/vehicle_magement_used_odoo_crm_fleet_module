@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_for_vehicle_info,vehicle_management,model_vehicle_info,base.group_user,1,1,1,1
+access_for_vehicle_services,vehicle_management,model_vehicle_services,base.group_user,1,1,1,1
+access_for_vehicle_brand,vehicle_management,model_vehicle_brand,base.group_user,1,1,1,1
+access_for_vehicle_repair,vehicle_management,model_vehicle_repair,base.group_user,1,1,1,1

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="service_tree" model="ir.ui.view">
+        <field name="name">service_tree.tree</field>
+        <field name="model">vehicle.services</field>
+        <field name="arch" type="xml">
+            <tree string="Services">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="service_charge"/>
+                <field name="service_product"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="service_form" model="ir.ui.view">
+        <field name="name">service.form</field>
+        <field name="model">vehicle.services</field>
+        <field name="arch" type="xml">
+            <form string="Services">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="service_product"/>
+                            <field name="service_charge"/>
+                        </group>
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}' />
+                </div>
+            </form>
+        </field>
+    </record>
+    <!--    action of the patients menu-->
+    <record id="action_Services" model="ir.actions.act_window">
+        <field name="name">Services</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vehicle.services</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="service_tree"/>
+    </record>
+
+
+    <menuitem id="service_root_menu" parent="configuration_vehicle" name="Service Repair Product" action="action_Services" sequence="1"/>
+
+</odoo>

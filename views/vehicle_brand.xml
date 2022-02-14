@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vehicle_brand_tree" model="ir.ui.view">
+        <field name="name">vehicle.brand.tree</field>
+        <field name="model">vehicle.brand</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle Brand">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="vehicle_brand_form" model="ir.ui.view">
+        <field name="name">vehicle.brand.form</field>
+        <field name="model">vehicle.brand</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Brand">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+
+                        </group>
+                        <group>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!--    action of the patients menu-->
+    <record id="action_vehicle_brand" model="ir.actions.act_window">
+        <field name="name">Vehicle Brand</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vehicle.brand</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="vehicle_brand_tree"/>
+    </record>
+
+
+    <menuitem id="vehicle_brand_sub_menu" parent="configuration_vehicle" name="Vehicle Brand" action="action_vehicle_brand" sequence="4"/>
+<!--     <menuitem action="fleet_vehicle_model_brand_action" parent="fleet_configuration" id="fleet_vehicle_model_brand_menu" sequence="6"/>-->
+     <menuitem id="res_partner_menu_customer"
+            name="Customers"
+            parent="configuration_vehicle"
+            action="base.action_partner_form"
+            sequence="10"/>
+
+</odoo>
